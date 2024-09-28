@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'App_Minecraft',
-    'App_Web'
+    'App_Web',
+    'playground'
 ]
 
 MIDDLEWARE = [

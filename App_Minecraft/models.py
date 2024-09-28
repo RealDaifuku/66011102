@@ -11,6 +11,9 @@ class Player(models.Model):
 
     def __str__(self):
         return self.display_name
+    
+    class Meta:
+        ordering = ['-kills']
 
 class JoinLog(models.Model):
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
