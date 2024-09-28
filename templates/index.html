@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCWA</title>
+    <style type="text/css">
+        * {
+            text-decoration: none;
+            margin: 0; /* Reset default margin */
+            padding: 0; /* Reset default padding */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+        body {
+            background-color: #e9e1d5; /* Light background for contrast */
+        }
+        .navbar {
+            background-image: url(Images/dirtblock.png);
+            background-color: rgb(95, 135, 70);
+            background-position: 0px -90px;
+            background-size: cover; /* Ensure the background covers the area */
+            height: 60px; /* Set a height for the navbar */
+            font-family: 'Times New Roman', Times, serif;
+            padding: 0 15px; /* Adjust padding for left and right */
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Center content vertically */
+            justify-content: space-between; /* Space out items */
+            z-index: 10; /* Ensure navbar is on top */
+            position: relative; /* Allow z-index to work */
+        }
+        .navdiv {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%; /* Make it take full width */
+        }
+        .logo a {
+            font-size: 35px;
+            font-weight: 600;
+            color: white;
+        }
+        ul {
+            display: flex; /* Make ul a flex container */
+            align-items: center; /* Center items vertically */
+            margin: 0; /* Remove margin */
+            padding: 0; /* Remove padding */
+        }
+        li {
+            list-style: none;
+            margin-right: 25px; /* Space between items */
+        }
+        li a {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        button {
+            background-color: black;
+            color: white;
+            margin-left: 10px;
+            border-radius: 10px;
+            padding: 10px;
+            width: 90px;
+            border: none; /* Remove border for buttons */
+            cursor: pointer; /* Show pointer on hover */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navdiv">
+            <div class="logo"><a href="#">MCWA</a></div>
+            <ul>
+                <li><a href="https://youtu.be/dQw4w9WgXcQ?si=1d9U-T8ovc7j3OeE" target="_blank">Home</a></li>
+                <li><a href="https://youtu.be/dQw4w9WgXcQ?si=1d9U-T8ovc7j3OeE" target="_blank">Dashboard</a></li>
+                <li><a href="https://youtu.be/dQw4w9WgXcQ?si=1d9U-T8ovc7j3OeE" target="_blank">About</a></li>
+                <li><a href="https://youtu.be/dQw4w9WgXcQ?si=1d9U-T8ovc7j3OeE" target="_blank">Contact</a></li>
+            </ul>
+            <div>
+                <button>SignIn</button>
+                <button>SignOut</button>
+            </div>
+        </div>
+    </nav>
+    {% if name %}
+    <h1>Welcome, {{ name }}</h1>
+    {% else %}
+    <h1>Who the fuck are you?</h1>
+    {% endif %}
+</body>
+</html>
