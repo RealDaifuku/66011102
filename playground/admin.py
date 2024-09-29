@@ -6,9 +6,9 @@ from App_Web.models import User
 @admin.register(Player)
 class PlayerAdmin(admin.ModelAdmin):
     actions = ['reset_kills', 'reset_deaths']
-    list_display = ['display_name', 'kills', 'deaths', 'online_duration', 'rank']
+    list_display = ['id', 'display_name', 'kills', 'deaths', 'online_duration', 'rank']
     list_per_page = 10
-    search_fields = ['display_name__istartswith']
+    search_fields = ['display_name__istartswith', 'id']
 
     def rank(self, player):
         if player.kills <= 20:
@@ -39,7 +39,7 @@ class PlayerAdmin(admin.ModelAdmin):
     
 @admin.register(JoinLog)
 class JoinLogAdmin(admin.ModelAdmin):
-    list_display = ('player_display_name', 'time_joined', 'time_left')
+    list_display = ['id', 'player_display_name', 'time_joined', 'time_left']
 
     def player_display_name(self, obj):
         return obj.player.display_name
@@ -47,7 +47,7 @@ class JoinLogAdmin(admin.ModelAdmin):
 
 @admin.register(Chat)
 class ChatAdmin(admin.ModelAdmin):
-    list_display = ('player_display_name', 'message', 'time_sent')
+    list_display = ['id', 'player_display_name', 'message', 'time_sent']
 
     def player_display_name(self, obj):
         return obj.player.display_name
@@ -55,11 +55,11 @@ class ChatAdmin(admin.ModelAdmin):
 
 @admin.register(Server)
 class ServerAdmin(admin.ModelAdmin):
-    list_display = ['ping', 'tick_per_sec', 'time', 'weather']
+    list_display = ['id', 'ping', 'tick_per_sec', 'time', 'weather']
     list_per_page = 10
 
 # admin.site.register(Player)
 # admin.site.register(JoinLog)
 # admin.site.register(Chat)
 # admin.site.register(Server)
-admin.site.register(User)
+# admin.site.register(User)
