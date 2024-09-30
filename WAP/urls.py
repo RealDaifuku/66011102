@@ -23,5 +23,6 @@ admin.site.index_title = 'Admin'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('playground.urls')),  # Ensure your app's URLs are included here
+    path('minecraft/', include('playground.urls')),  # Ensure your app's URLs are included here
+    path('', include('App_Web.urls')) 
 ]

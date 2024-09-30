@@ -11,8 +11,13 @@ from .serializers import PlayerSerializer, JoinLogSerializer, ChatSerializer, Se
 # Create your views here.
 @api_view(['GET', 'POST'])
 def player_list(request):
+    # if request.method == 'GET':
+    #     queryset = Player.objects.all()
+    #     serializer = PlayerSerializer(queryset, many=True)
+    #     return Response(serializer.data)
     if request.method == 'GET':
-        queryset = Player.objects.all()
+        # Retrieve all players and order by kills in descending order
+        queryset = Player.objects.all().order_by('-kills')
         serializer = PlayerSerializer(queryset, many=True)
         return Response(serializer.data)
     
