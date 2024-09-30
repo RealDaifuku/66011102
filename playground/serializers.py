@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from App_Minecraft.models import Player, JoinLog, Chat, Server
+from App_Web.models import User
 
 class PlayerSerializer(serializers.ModelSerializer):
     class Meta:

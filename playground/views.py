@@ -2,10 +2,11 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework import status
 
 from App_Minecraft.models import Player, JoinLog, Chat, Server
+from App_Web.models import User
 from .serializers import PlayerSerializer, JoinLogSerializer, ChatSerializer, ServerSerializer
-from rest_framework import status
 
 # Create your views here.
 @api_view(['GET', 'POST'])
@@ -89,20 +90,20 @@ def player_detail(request, id):
             player.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
 
-@api_view()
+@api_view(['GET'])
 def chat_detail(request, id):
     chat = get_object_or_404(Chat, pk=id)
-    serializer = PlayerSerializer(chat)
+    serializer = ChatSerializer(chat)
     return Response(serializer.data)
 
-@api_view()
-def joinlog_detail(request):
+@api_view(['GET'])
+def joinlog_detail(request, id):
     joinlog = get_object_or_404(JoinLog, pk=id)
-    serializer = PlayerSerializer(joinlog)
+    serializer = JoinLogSerializer(joinlog)
     return Response(serializer.data)
 
-@api_view()
-def serverstatus_detail(request):
+@api_view(['GET'])
+def serverstatus_detail(request, id):
     server = get_object_or_404(Server, pk=id)
-    serializer = PlayerSerializer(server)
+    serializer = ServerSerializer(server)
     return Response(serializer.data)

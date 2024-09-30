@@ -1,7 +1,6 @@
-from django.urls import path, include
-from . import views 
+from django.urls import path
+from . import views
 
-# URLConfig
 urlpatterns = [
     path('player/', views.player_list),
     path('chat/', views.chat_list),
