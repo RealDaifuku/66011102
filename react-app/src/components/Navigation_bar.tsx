@@ -1,26 +1,30 @@
-// components/Navigation_bar.tsx
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Navbar = styled.nav`
   background-color: #458f50;
-  display: flex; /* Use flexbox for layout */
-  align-items: center; /* Center items vertically */
-  padding: 10px; /* Add padding to the navbar */
+  display: flex;
+  align-items: center;
+  padding: 10px;
 `;
 
 const Brand = styled(Link)`
-  margin-right: 20px; /* Space between logo and links */
+  margin-right: 20px;
 `;
 
 const Logo = styled.img`
-  height: 40px; /* Adjust the height of the logo */
+  height: 40px;
 `;
 
 const NavContainer = styled.div`
-  display: flex; /* Use flexbox for links */
-  flex-grow: 1; /* Allow the links to grow and take available space */
-  justify-content: flex-start; /* Align items to the start */
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const NavButton = styled(Link)`
@@ -28,7 +32,7 @@ const NavButton = styled(Link)`
   border-radius: 50em;
   color: white;
   padding: 10px 20px;
-  margin: 0 10px; /* Add margin between buttons */
+  margin: 0 10px;
   text-decoration: none;
   text-align: center;
 
@@ -52,6 +56,9 @@ const Navigation_bar: React.FC = () => {
         <NavButton to="/admin">Admin</NavButton>
         <NavButton to="/contact">Contact</NavButton>
       </NavContainer>
+      <ButtonContainer>
+        <NavButton to="/signup">Signup</NavButton>
+      </ButtonContainer>
     </Navbar>
   );
 };
