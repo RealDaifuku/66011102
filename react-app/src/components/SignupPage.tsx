@@ -137,6 +137,10 @@ const Button = styled.button`
   }
 `;
 
+const Texth1 = styled.h1`
+    color: white;
+    `;
+
 const SignupPage: React.FC = () => {
   const [formData, setFormData] = useState({
     username: '',
@@ -162,10 +166,9 @@ const SignupPage: React.FC = () => {
       setError('Signup failed. Please try again.');
     }
   };
-
   return (
     <FormContainer>
-      <h1>Sign Up</h1>
+      <Texth1>Sign Up</Texth1>
       <form onSubmit={handleSubmit}>
         <Input
           type="text"

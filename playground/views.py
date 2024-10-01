@@ -8,13 +8,18 @@ from App_Minecraft.models import Player, JoinLog, Chat, Server
 from App_Web.models import User
 from .serializers import PlayerSerializer, JoinLogSerializer, ChatSerializer, ServerSerializer
 
-# Create your views here.
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from App_Minecraft.models import Player
+import json
+from datetime import datetime
+
 @api_view(['GET', 'POST'])
 def player_list(request):
-    # if request.method == 'GET':
-    #     queryset = Player.objects.all()
-    #     serializer = PlayerSerializer(queryset, many=True)
-    #     return Response(serializer.data)
+    if request.method == 'GET':
+        queryset = Player.objects.all()
+        serializer = PlayerSerializer(queryset, many=True)
+        return Response(serializer.data)
     if request.method == 'GET':
         # Retrieve all players and order by kills in descending order
         queryset = Player.objects.all().order_by('-kills')

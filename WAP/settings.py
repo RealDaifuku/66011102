@@ -27,8 +27,7 @@ SECRET_KEY = 'django-insecure-u=39rm14hwc+!o#4qntzwoq7)v#qz&(-t0u*4-b^5h743qj*9m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 
@@ -47,14 +46,15 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'WAP.urls'
@@ -146,11 +146,15 @@ AUTH_USER_MODEL = 'App_Web.User'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Your React app URL
+    "http://localhost",
+    "http://127.0.0.1:5173",  # Alternative localhost URL
 ]
 
-CORS_ORIGIN_WHITELIST = (
-    "http://localhost:5173",  # Your React app URL
-)
+# CORS_ORIGIN_WHITELIST = (
+#     "http://localhost:5173",  # Your React app URL
+#     "http://localhost",
+#     "http://127.0.0.1:5173",
+# )
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -164,4 +168,32 @@ SIMPLE_JWT = {
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
+]
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
+]
+
+CORS_ALLOW_HEADERS = [
+    'Authorization',
+    'Content-Type',
+    'Accept',
+    'Origin',
+    'User-Agent',
+    'X-Requested-With',
+]
+
+
+# Enable CORS logging to debug issues
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
 ]

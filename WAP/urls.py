@@ -24,5 +24,6 @@ admin.site.index_title = 'Admin'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('minecraft/', include('playground.urls')),  # Ensure your app's URLs are included here
-    path('', include('App_Web.urls')) 
+    path('', include('App_Web.urls')) ,
+    path('mojang/', include('App_Minecraft.urls'))
 ]
