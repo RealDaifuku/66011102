@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:17  # Use the desired version of PostgreSQL
+    container_name: postgres_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: WAP
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: daifuku14374555
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persist PostgreSQL data to a named volume
+    networks:
+      - django_network
+
+volumes:
+  postgres_data:  # Named volume for persistent database storage
+
+networks:
+  django_network:  # Create a custom network for your services
