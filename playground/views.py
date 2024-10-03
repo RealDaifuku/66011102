@@ -13,6 +13,7 @@ from django.views.decorators.csrf import csrf_exempt
 from App_Minecraft.models import Player
 import json
 from datetime import datetime
+from django.views.decorators.http import require_http_methods
 
 @api_view(['GET', 'POST'])
 def player_list(request):
@@ -117,3 +118,19 @@ def serverstatus_detail(request, id):
     server = get_object_or_404(Server, pk=id)
     serializer = ServerSerializer(server)
     return Response(serializer.data)
+
+@csrf_exempt
+@require_http_methods(["GET"])
+def get_server_status(request):
+    """
+    View to return the latest server status.
+    """
+    try:
+        # Retrieve the latest server status entry
+        latest_status = Server.objects.latest('time')
+        serializer = ServerSerializer(latest_status)
+        return JsonResponse(serializer.data, safe=False, status=status.HTTP_200_OK)
+    except Server.DoesNotExist:
+        return JsonResponse({"error": "No server status data found."}, status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

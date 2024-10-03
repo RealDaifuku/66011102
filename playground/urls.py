@@ -10,4 +10,5 @@ urlpatterns = [
     path('chat/<int:id>/', views.chat_detail),
     path('joinlog/<int:id>/', views.joinlog_detail),
     path('serverstatus/<int:id>/', views.serverstatus_detail),
+    path("serverstatus/", views.get_server_status, name="serverstatus"),  # Add this line
 ]

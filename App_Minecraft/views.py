@@ -131,3 +131,4 @@ def get_player_data(request, username):
         response["Access-Control-Allow-Methods"] = "GET, OPTIONS"
         response["Access-Control-Allow-Headers"] = "Authorization, Content-Type"
         return response
+
